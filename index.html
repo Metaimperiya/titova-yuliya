@@ -80,19 +80,19 @@ header.nav.scrolled{border-bottom-color:var(--line);background:rgba(244,246,240,
 .hero .extra{font-size:16px;color:var(--green);font-style:italic;margin-bottom:38px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
 .portrait{aspect-ratio:4/5;border-radius:var(--radius);position:relative;overflow:hidden;background:linear-gradient(160deg,#e8e2d8,#d9d0c2);border:1px solid var(--line);box-shadow:0 30px 70px -30px rgba(42,51,42,.3);width:100%;max-width:520px;margin:0 auto}
-.portrait img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center 15%;object-position:center 15%;display:block;transition:transform .8s var(--ease);background:#e8e2d8}
+.portrait img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center;display:block;transition:transform .8s var(--ease);background:#e8e2d8}
 .portrait:hover img{transform:scale(1.04)}
-.portrait .fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:72px;color:var(--green);opacity:.35;pointer-events:none}
 .sec-head{max-width:760px;margin-bottom:60px}
 .sec-head h2{font-size:clamp(32px,4.2vw,52px);margin-bottom:16px}
 .sec-head p{color:var(--muted);font-size:16px}
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
 .about-text{color:#4d5551;font-size:17px;line-height:1.8}
 .about-text p{margin-bottom:16px}
-.about-media{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#e8e2d8,#d9d0c2);aspect-ratio:9/16;max-width:340px;margin:0 auto;box-shadow:0 24px 60px -30px rgba(42,51,42,.4);position:relative;width:100%}
-.about-media video{width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center;background:transparent}
-.about-media .video-poster{position:absolute;inset:0;width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center 15%;object-position:center 15%;z-index:1;pointer-events:none}
-.about-media video.is-playing + .video-poster{opacity:0;transition:opacity .5s}
+.about-media{display:flex;flex-direction:column;gap:20px;max-width:340px;margin:0 auto;width:100%}
+.about-media .photo-block{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#e8e2d8,#d9d0c2);aspect-ratio:4/5;box-shadow:0 24px 60px -30px rgba(42,51,42,.4)}
+.about-media .photo-block img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center;display:block}
+.about-media .video-block{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#000;aspect-ratio:9/16;box-shadow:0 24px 60px -30px rgba(42,51,42,.4);position:relative}
+.about-media .video-block video{width:100%;height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center center;object-position:center center;display:block;background:#000}
 .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
 .work-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;transition:.4s var(--ease);position:relative;overflow:hidden}
 .work-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--leaf),var(--green));opacity:0;transition:.4s}
@@ -190,7 +190,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px;background:#eaf0e6}
   .sticky-cta a{flex:1;text-align:center;padding:12px 14px}
   .price{flex-direction:column;align-items:flex-start;gap:6px}
   .portrait{max-width:100%}
-  .about-media{max-width:280px}
+  .about-media{max-width:100%}
 }
 </style>
 </head>
@@ -237,8 +237,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px;background:#eaf0e6}
         </div>
       </div>
       <div class="portrait reveal">
-        <div class="fallback">ЮТ</div>
-        <img src="https://raw.githubusercontent.com/Metaimperiya/titova-yuliya/main/titova-yuliya.png" alt="Титова Юлия — психолог ЮТ.А" loading="eager" decoding="async" width="800" height="1000" onerror="this.style.display='none'">
+        <img src="https://raw.githubusercontent.com/Metaimperiya/titova-yuliya/main/titova-yuliya.png" alt="Титова Юлия — психолог ЮТ.А" loading="eager" decoding="async" width="800" height="1000">
       </div>
     </div>
   </div>
@@ -258,8 +257,12 @@ footer{border-top:1px solid var(--line);padding:60px 0 30px;background:#eaf0e6}
         <p>Работаю с тревожностью, паническими атаками, неврозами и страхом за своё здоровье.</p>
       </div>
       <div class="about-media reveal">
-        <img class="video-poster" src="https://raw.githubusercontent.com/Metaimperiya/titova-yuliya/main/titova-yuliya.png" alt="" aria-hidden="true" loading="lazy" decoding="async" onerror="this.style.display='none'">
-        <video id="aboutVideo" src="https://raw.githubusercontent.com/Metaimperiya/titova-yuliya/main/titova-yuliya.mp4" poster="https://raw.githubusercontent.com/Metaimperiya/titova-yuliya/main/titova-yuliya.png" loop muted playsinline preload="metadata" controls></video>
+        <div class="photo-block">
+          <img src="https://raw.githubusercontent.com/Metaimperiya/titova-yuliya/main/titova-yuliya.png" alt="Титова Юлия — фото" loading="lazy" decoding="async">
+        </div>
+        <div class="video-block">
+          <video src="https://raw.githubusercontent.com/Metaimperiya/titova-yuliya/main/titova-yuliya.mp4" poster="https://raw.githubusercontent.com/Metaimperiya/titova-yuliya/main/titova-yuliya.png" controls playsinline preload="metadata" webkit-playsinline></video>
+        </div>
       </div>
     </div>
   </div>
@@ -462,47 +465,6 @@ var io = new IntersectionObserver(function (entries) {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-
-// Видео: запускаем только когда оно в зоне видимости и только если браузер разрешает autoplay.
-// На старых Samsung autoplay часто заблокирован — тогда показывается poster (картинка), а не чёрный экран.
-(function () {
-  var video = document.getElementById('aboutVideo');
-  if (!video) return;
-
-  var playAttempted = false;
-
-  function tryPlay() {
-    if (playAttempted) return;
-    playAttempted = true;
-    var p = video.play();
-    if (p && typeof p.then === 'function') {
-      p.then(function () {
-        video.classList.add('is-playing');
-      }).catch(function () {
-        // autoplay заблокирован — оставляем poster видимым
-      });
-    }
-  }
-
-  if ('IntersectionObserver' in window) {
-    var vio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          tryPlay();
-          vio.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.25 });
-    vio.observe(video);
-  } else {
-    tryPlay();
-  }
-
-  // Если пользователь тапнул play — скрываем poster
-  video.addEventListener('play', function () {
-    video.classList.add('is-playing');
-  });
-})();
 </script>
 </body>
 </html>
